@@ -1,0 +1,26 @@
+{
+  "name": "week-5-hackathon-room-1-bc18-wk5",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "description": "Feel free to delete this and start from scratch.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bin/www.js",
+    "dev": "node -r dotenv/config --watch bin/www.js",
+    "deploy": "git add . && git commit -m \"Deploy to Heroku\" && git push heroku main"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "mssql": "^11.0.1",
+    "node": "^22.13.0",
+    "pg": "^8.13.1",
+    "pool": "^0.4.1"
+  }
+}

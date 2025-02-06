@@ -1,0 +1,7 @@
+.container {
+  border-style: solid;
+  border-color: black;
+  border-width: 10px;
+  flex: 8;
+  background-color: aqua;
+}
