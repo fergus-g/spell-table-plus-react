@@ -1,17 +1,21 @@
-import PlayerHand from "./components/PlayerHand/PlayerHand.jsx";
-import DeckList from "./components/DeckList/DeckList.jsx";
-import PlayArea from "./components/PlayArea/PlayArea.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserProvider } from "./context/UserContext.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Home from "./pages/Home/Home.jsx";
 import "./App.css";
 
 function App() {
   return (
-    <div className={"app-container"}>
-      <div className={"play-container"}>
-        <PlayArea />
-        <DeckList />
-      </div>
-      <PlayerHand />
-    </div>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 

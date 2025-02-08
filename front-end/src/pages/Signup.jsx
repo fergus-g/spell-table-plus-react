@@ -1,33 +1,32 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
-import { useUser } from "../context/UserContext";
 
-const Login = () => {
-  const { setUser } = useUser();
+const SignUp = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize navigate
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       const data = await response.json();
-      setUser({ id: data.user.id, username: data.user.username });
-      if (!response.ok) throw new Error(data.message || "Login failed");
+      if (!response.ok) throw new Error(data.message || "Sign-up failed");
 
-      console.log("Login successful!", data);
-
-      navigate("/");
+      setSuccess("Account created! You can now log in.");
+      setUsername("");
+      setEmail("");
+      setPassword("");
     } catch (err) {
       setError(err.message);
     }
@@ -43,8 +42,16 @@ const Login = () => {
           alignItems: "center",
         }}
       >
-        <Typography variant="h5">Login</Typography>
+        <Typography variant="h5">Sign Up</Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+          <TextField
+            fullWidth
+            label="Username"
+            margin="normal"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
           <TextField
             fullWidth
             label="Email"
@@ -63,8 +70,9 @@ const Login = () => {
             required
           />
           {error && <Typography color="error">{error}</Typography>}
+          {success && <Typography color="primary">{success}</Typography>}
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Login
+            Sign Up
           </Button>
         </Box>
       </Box>
@@ -72,4 +80,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

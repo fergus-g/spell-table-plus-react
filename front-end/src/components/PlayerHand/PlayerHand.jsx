@@ -1,24 +1,19 @@
-import Modal from "../Modal/Modal";
+import CreateDeckModal from "../Modal/CreateDeckModal";
 import { useState } from "react";
-import fetchCardData from "../../api/fetchCardData";
+import { Button } from "@mui/material";
+// import fetchCardData from "../../api/fetchCardData";
+import { useUser } from "../../context/UserContext.jsx";
 
 import styles from "./PlayerHand.module.css";
 
 export default function PlayerHand() {
-  const [open, setOpen] = useState(false);
-  const [input, setInput] = useState(""); // State to hold textarea value
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const user = useUser();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleFetch = (input) => {
-    console.log(input);
-    fetchCardData({ input });
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
+  const handleCreateDeck = (deck) => {
+    console.log(user);
+    console.log("Deck Created:", deck);
+    // Send to backend or store it
   };
 
   return (
@@ -27,20 +22,14 @@ export default function PlayerHand() {
         <div>
           <h1>Player Hand</h1>
         </div>
-        <button onClick={handleOpen} className={styles.create_button}>
+        <Button variant="contained" onClick={() => setIsModalOpen(true)}>
           Create Deck
-        </button>
-        <Modal isOpen={open}>
-          <>
-            <h1>Add Cards</h1>
-            <textarea
-              value={input} // Bind the textarea value to the state
-              onChange={(e) => setInput(e.target.value)} // Update state on input change
-            />
-            <button onClick={() => handleFetch(input)}>Add</button>
-            <button onClick={handleClose}>Cancel</button>
-          </>
-        </Modal>
+        </Button>
+        <CreateDeckModal
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onCreate={handleCreateDeck}
+        />
       </div>
     </div>
   );
