@@ -7,6 +7,11 @@ const dbConfig = {
   server: process.env.DB_SERVER,
   port: parseInt(process.env.DB_PORT, 10) || 1433,
   database: process.env.DB_NAME,
+  pool: {
+    max: 10, // Increase pool size if necessary
+    min: 0,
+    idleTimeoutMillis: 30000,
+  },
   options: {
     encrypt: process.env.DB_ENCRYPT === "true", // Convert string to boolean
     trustServerCertificate: process.env.DB_TRUST_CERT === "true",

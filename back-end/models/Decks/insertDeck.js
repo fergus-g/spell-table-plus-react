@@ -4,8 +4,7 @@ export default async function insertDeck(user_id, name) {
   const poolInstance = await pool;
   const query = `
     INSERT INTO decks (user_id, name) 
-    VALUES (@user_id, @name
-    );
+    VALUES (@user_id, @name);
 
     SELECT * FROM decks WHERE id = SCOPE_IDENTITY();
   `;

@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { Modal, Box, TextField, Button, Typography } from "@mui/material";
+import { useUser } from "../../context/UserContext";
 
 const CreateDeckModal = ({ open, onClose, onCreate }) => {
   const [deckName, setDeckName] = useState("");
   const [deckList, setDeckList] = useState("");
+  const user = useUser();
 
   const handleCreate = () => {
-    onCreate({ name: deckName, cards: deckList.split("\n").slice(0, 100) });
+    onCreate({
+      user_id: user.user.id,
+      name: deckName,
+      cards: deckList.split("\n").slice(0, 100),
+    });
     setDeckName("");
     setDeckList("");
     onClose();
@@ -46,11 +52,10 @@ const CreateDeckModal = ({ open, onClose, onCreate }) => {
           label="Deck List (1 card per line)"
           variant="outlined"
           multiline
-          rows={8} // Adjust for better visibility
-          fullWidth
+          rows={8}
           value={deckList}
           onChange={(e) => setDeckList(e.target.value)}
-          inputProps={{ maxLength: 10000 }} // Limit to 100 lines (assuming avg. 100 chars per line)
+          inputProps={{ maxLength: 10000 }}
         />
 
         <Button
