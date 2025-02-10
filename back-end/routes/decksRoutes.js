@@ -4,7 +4,7 @@ import getDecks from "../controllers/Decks/getDecks.js";
 
 const router = express.Router();
 
-router.get("/", getDecks);
+router.get("/:user_id", getDecks);
 router.post("/", createDeck);
 
 export default router;
