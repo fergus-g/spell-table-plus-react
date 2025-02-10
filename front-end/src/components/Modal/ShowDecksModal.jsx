@@ -65,7 +65,7 @@ const DeckButton = ({ name, colors = [], onClick, id, onDelete }) => {
       <IconButton
         onClick={() => {
           deleteDeck(id).then(() => {
-            onDelete((prevDecks) => prevDecks.filter((deck) => deck.id !== id)); // Updates decks state
+            onDelete((prevDecks) => prevDecks.filter((deck) => deck.id !== id));
           });
         }}
         id={id}
@@ -131,8 +131,7 @@ const ShowDeckModal = ({ open, onClose, decks, loading, onDelete }) => {
                 key={deck.id}
                 id={deck.id}
                 name={deck.name}
-                colors={deck.colors || []} // Expecting an array of color strings
-                onClick={() => console.log(`Selected deck: ${deck.name}`)}
+                colors={deck.colors || []}
                 onDelete={onDelete}
               />
             ))

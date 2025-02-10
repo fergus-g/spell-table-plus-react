@@ -37,7 +37,7 @@ const useCreateDeck = async (deck) => {
       deck_id: deckId,
       name: card.details.name,
       lang: card.details.lang,
-      image_uri: card.details.image_uris.normal,
+      image_uri: card.details.image_uris?.normal,
       type_line: card.details.type_line,
     }));
 

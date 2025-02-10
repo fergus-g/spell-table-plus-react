@@ -13,7 +13,6 @@ export default function PlayerHand() {
   const [decks, setDecks] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = useUser();
-  console.log("This is decks:", decks);
 
   const clickHandler = async (modal) => {
     if (modal === "create") {
@@ -23,7 +22,7 @@ export default function PlayerHand() {
       setLoading(true);
       try {
         const fetchedDecks = await fetchDecks(2);
-        console.log("This is fetchedDecks:", fetchedDecks);
+
         setDecks(fetchedDecks.data);
       } catch (error) {
         console.error("Error fetching decks:", error);
