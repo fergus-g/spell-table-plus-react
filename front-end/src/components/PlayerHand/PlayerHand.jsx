@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import styles from "./PlayerHand.module.css";
 import useCreateDeck from "../../helpers/useCreateDeck";
 import { useUser } from "../../context/UserContext";
-import getCards from "../../helpers/getCards";
+import fetchDecks from "../../helpers/fetchDecks";
 
 export default function PlayerHand() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,8 +21,8 @@ export default function PlayerHand() {
     if (modal === "show") {
       setLoading(true);
       try {
-        const fetchedDecks = await getCards(2);
-        console.log("This is fetchedDecks:", fetchedDecks);
+        const fetchedDecks = await fetchDecks(2);
+
         setDecks(fetchedDecks.data);
       } catch (error) {
         console.error("Error fetching decks:", error);
@@ -56,6 +56,7 @@ export default function PlayerHand() {
           onClose={() => setIsDeckModalOpen(false)}
           decks={decks}
           loading={loading}
+          onDelete={setDecks}
         />
       </div>
     </div>

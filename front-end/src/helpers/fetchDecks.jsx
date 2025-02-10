@@ -1,4 +1,4 @@
-const getCards = async (user_id) => {
+const fetchDecks = async (user_id) => {
   try {
     const response = await fetch(`http://localhost:5000/decks/${user_id}`);
 
@@ -15,4 +15,4 @@ const getCards = async (user_id) => {
   }
 };
 
-export default getCards;
+export default fetchDecks;
