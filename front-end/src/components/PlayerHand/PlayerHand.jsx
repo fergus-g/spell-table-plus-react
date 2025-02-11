@@ -7,7 +7,7 @@ import useCreateDeck from "../../helpers/useCreateDeck";
 import { useUser } from "../../context/UserContext";
 import fetchDecks from "../../helpers/fetchDecks";
 
-export default function PlayerHand() {
+export default function PlayerHand({ setCards }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeckModalOpen, setIsDeckModalOpen] = useState(false);
   const [decks, setDecks] = useState([]);
@@ -57,6 +57,7 @@ export default function PlayerHand() {
           decks={decks}
           loading={loading}
           onDelete={setDecks}
+          setCards={setCards}
         />
       </div>
     </div>
