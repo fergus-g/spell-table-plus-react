@@ -1,7 +1,15 @@
 .container {
   border-style: solid;
+  display: flex;
+  flex-direction: column;
   border-color: black;
   border-width: 10px;
   flex: 2;
-  background-color: blue;
+  overflow-y: auto;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
