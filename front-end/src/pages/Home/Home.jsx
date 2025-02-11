@@ -7,12 +7,33 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const [cards, setCards] = useState([]);
+  const [creatures, setCreatures] = useState([]);
+  const [enchantments, setEnchantments] = useState([]);
+  const [lands, setLands] = useState([]);
+  const [artifacts, setArtifacts] = useState([]);
+
+  console.log(creatures);
 
   return (
     <div className={styles.app_container}>
       <div className={styles.play_container}>
-        <PlayArea />
-        <DeckList cards={cards} />
+        <PlayArea
+          creatures={creatures}
+          enchantments={enchantments}
+          lands={lands}
+          artifacts={artifacts}
+        />
+        <DeckList
+          cards={cards}
+          creatures={creatures}
+          enchantments={enchantments}
+          lands={lands}
+          artifacts={artifacts}
+          setCreatures={setCreatures}
+          setEnchantments={setEnchantments}
+          setLands={setLands}
+          setArtifacts={setArtifacts}
+        />
       </div>
       <PlayerHand setCards={setCards} />
     </div>
