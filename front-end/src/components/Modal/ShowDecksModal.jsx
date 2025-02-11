@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Edit, Delete } from "@mui/icons-material";
 import deleteDeck from "../../helpers/deleteDeck";
+import fetchCards from "../../helpers/fetchCards";
 
 const DeckButton = ({ name, colors = [], onClick, id, onDelete }) => {
   return (
@@ -78,7 +79,14 @@ const DeckButton = ({ name, colors = [], onClick, id, onDelete }) => {
   );
 };
 
-const ShowDeckModal = ({ open, onClose, decks, loading, onDelete }) => {
+const ShowDeckModal = ({
+  open,
+  onClose,
+  decks,
+  loading,
+  onDelete,
+  setCards,
+}) => {
   return (
     <Modal open={open} onClose={onClose} aria-labelledby="create-deck-modal">
       <Box
@@ -133,6 +141,7 @@ const ShowDeckModal = ({ open, onClose, decks, loading, onDelete }) => {
                 name={deck.name}
                 colors={deck.colors || []}
                 onDelete={onDelete}
+                onClick={async () => setCards(await fetchCards(deck.id))}
               />
             ))
           ) : (

@@ -1,7 +1,115 @@
 .container {
   border-style: solid;
+  display: flex;
+  flex-direction: column; /* Stack top and bottom rows */
   border-color: black;
   border-width: 10px;
   flex: 8;
-  background-color: aqua;
+}
+
+.cardzone {
+  display: flex;
+  flex-direction: row; /* Create a horizontal layout for the top row */
+  width: 100%;
+}
+
+.searchCard {
+  background-color: #13aa52;
+  justify-content: flex-end;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.searchCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .searchCard {
+    padding: 10px 30px;
+  }
+}
+
+.creatureEnchantment {
+  display: flex;
+  flex-direction: row; /* Horizontal layout for Creatures and Enchantments */
+  width: 100%;
+  border-radius: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.4);
+}
+
+.creatureZone {
+  flex: 3; /* 60% of the width */
+  border-color: black;
+  border-style: solid;
+  padding: 10px;
+}
+
+.enchantmentZone {
+  flex: 2; /* 40% of the width */
+  border-color: black;
+  border-style: solid;
+  height: 450px;
+  padding: 10px;
+}
+
+.zoneHeading {
+  text-align: center;
+}
+
+.cardImages {
+  opacity: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.landsArtifacts {
+  display: flex;
+  flex-direction: row; /* Horizontal layout for Lands and Artifacts */
+  width: 100%;
+  border-radius: 10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: aliceblue;
+  background-color: rgba(240, 248, 255, 0.4);
+  height: 450px;
+}
+
+.landsZone {
+  flex: 3; /* 60% of the width */
+  border-color: black;
+  border-style: solid;
+  padding: 10px;
+}
+
+.artifactsZone {
+  flex: 2; /* 40% of the width */
+  border-color: black;
+  border-style: solid;
+  height: 450px;
+  padding: 10px;
 }
