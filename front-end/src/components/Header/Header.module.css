@@ -1,7 +1,12 @@
-headerContainer {
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
-img {
-  width: 100vw;
-  max-height: 200px;
+.sliderContainer {
+  display: flex;
+  margin: 20px;
+  padding-left: 20px;
+  scale: 2;
+  color: orange;
 }

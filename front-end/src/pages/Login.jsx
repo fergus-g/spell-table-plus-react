@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Paper,
+} from "@mui/material";
 import { useUser } from "../context/UserContext";
 
 const Login = () => {
@@ -22,7 +29,6 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      // Check if the response is OK (status code 200)
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.message || "Login failed");
@@ -32,7 +38,7 @@ const Login = () => {
       setUser({ id: data.user.id, username: data.user.username });
       console.log("Login successful!", data);
 
-      navigate("/"); // Navigate to the home page after successful login
+      navigate("/board");
     } catch (err) {
       setError(err.message);
     }
@@ -59,58 +65,128 @@ const Login = () => {
   }, [setUser]);
 
   return (
-    <Container maxWidth="xs">
-      <Box
-        sx={{
-          mt: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+    <>
+      <img
+        src="/assets/Magic-The-Gathering.webp"
+        alt="Magic: The Gathering background"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+          opacity: 0.5,
         }}
-      >
-        <Typography variant="h5">Login</Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Email"
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {error && <Typography color="error">{error}</Typography>}
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Login
-          </Button>
-          <Typography
-            variant="h6"
-            style={{
-              marginTop: "10px",
+      />
+      <Container maxWidth="xs">
+        <Box
+          sx={{
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Paper
+            elevation={3}
+            sx={{
+              p: 4,
+              borderRadius: 3,
+              width: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
             }}
           >
-            Not a user?{" "}
-            <Link
-              to="/signup"
-              style={{
-                textDecoration: "none",
-                color: "blue",
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
-              Sign up
-            </Link>
-          </Typography>
+              <Typography variant="h5" sx={{ mb: 3 }}>
+                Login
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{ width: "100%" }}
+              >
+                <TextField
+                  fullWidth
+                  label="Email"
+                  margin="normal"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  sx={{ backgroundColor: "white", borderRadius: 1 }}
+                />
+                <TextField
+                  fullWidth
+                  label="Password"
+                  type="password"
+                  margin="normal"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  sx={{ backgroundColor: "white", borderRadius: 1 }}
+                />
+                {error && (
+                  <Typography color="error" sx={{ mt: 2 }}>
+                    {error}
+                  </Typography>
+                )}
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Login
+                </Button>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    textAlign: "center",
+                    mt: 2,
+                  }}
+                >
+                  Not a user?{" "}
+                  <Link
+                    to="/signup"
+                    style={{
+                      textDecoration: "none",
+                      color: "blue",
+                    }}
+                  >
+                    Sign up
+                  </Link>
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    textAlign: "center",
+                    mt: 2,
+                  }}
+                >
+                  {" "}
+                  <Link
+                    to="/"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                  >
+                    &lt; Go Back
+                  </Link>
+                </Typography>
+              </Box>
+            </Box>
+          </Paper>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 };
 

@@ -1,15 +1,9 @@
 .container {
-  border-style: solid;
   display: flex;
   flex-direction: column; /* Stack top and bottom rows */
-  border-color: black;
-  border-width: 10px;
-  flex: 8;
-}
-
-.cardzone {
-  display: flex;
-  flex-direction: row; /* Create a horizontal layout for the top row */
+  flex: 14;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .cardImg {
@@ -18,78 +12,52 @@
   transform-origin: center;
 }
 
-.cardImg:hover {
+/* .cardImg:hover {
   transform: scale(2);
-}
+} */
 
 .cardImgContainer {
   display: flex;
-  flex-wrap: wrap; /* Wrap the cards when they exceed the container width */
-  gap: 10px; /* Adds spacing between the cards */
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 10px;
   width: 100%;
-  justify-content: flex-start; /* Align the cards to the left */
-  overflow-y: auto; /* Enables vertical scrolling when the cards exceed height */
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 
-.creatureEnchantment {
+.creatureEnchantment,
+.landsArtifacts {
   display: flex;
-  flex-direction: row; /* Horizontal layout for Creatures and Enchantments */
-  width: 100%;
-  border-radius: 10px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: aliceblue;
-  background-color: rgba(240, 248, 255, 0.4);
+  height: 50%; /* Each section takes up 50% of the container height */
+  min-height: 0; /* This is important for proper flex behavior */
+  overflow-y: auto;
 }
 
-.creatureZone {
-  flex: 3; /* 60% of the width */
-  border-color: black;
-  border-style: solid;
-  padding: 10px;
-  height: 450px; /* Fixed height */
-  overflow-y: auto; /* Scroll vertically if cards exceed the height */
+.creatureEnchantment,
+.landsArtifacts {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-.enchantmentZone {
-  flex: 2; /* 40% of the width */
-  border-color: black;
-  border-style: solid;
+.creatureZone,
+.enchantmentZone,
+.landsZone,
+.artifactsZone {
+  flex: 3;
   padding: 10px;
-  height: 450px; /* Fixed height */
-  overflow-y: auto; /* Scroll vertically if cards exceed the height */
+  height: 100%;
+  overflow-y: auto;
+}
+
+.creatureZone,
+.enchantmentZone,
+.landsZone,
+.artifactsZone {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .zoneHeading {
   text-align: center;
-}
-
-.landsArtifacts {
-  display: flex;
-  flex-direction: row; /* Horizontal layout for Lands and Artifacts */
-  width: 100%;
-  border-radius: 10px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: aliceblue;
-  background-color: rgba(240, 248, 255, 0.4);
-}
-
-.landsZone {
-  flex: 3; /* 60% of the width */
-  border-color: black;
-  border-style: solid;
-  padding: 10px;
-  height: 450px; /* Fixed height */
-  overflow-y: auto; /* Scroll vertically if cards exceed the height */
-}
-
-.artifactsZone {
-  flex: 2; /* 40% of the width */
-  border-color: black;
-  border-style: solid;
-  height: 450px; /* Fixed height */
-  padding: 10px;
-  overflow-y: auto; /* Scroll vertically if cards exceed the height */
 }

@@ -4,6 +4,7 @@ const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loggedOut, setLoggedOut] = useState(false);
 
   // On page load, check for user in localStorage and set context
   useEffect(() => {
@@ -29,7 +30,7 @@ export const UserProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, loggedOut, setLoggedOut }}>
       {children}
     </UserContext.Provider>
   );

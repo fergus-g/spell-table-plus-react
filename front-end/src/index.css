@@ -1,5 +1,6 @@
-/* Reset margins and paddings for html, body, and root div */
-*,
+Reset margins and paddings for html,
+body,
+and root div *,
 *::before,
 *::after {
   margin: 0;

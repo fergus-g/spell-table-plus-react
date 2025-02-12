@@ -1,9 +1,7 @@
 .container {
-  border-style: solid;
   display: flex;
   flex-direction: column;
-  border-color: black;
-  border-width: 10px;
+  max-height: 50vh;
   flex: 2;
   overflow-y: auto;
 
