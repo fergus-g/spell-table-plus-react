@@ -1,6 +1,8 @@
 import PlayArea from "../../components/PlayArea/PlayArea";
 import DeckList from "../../components/DeckList/DeckList";
 import PlayerHand from "../../components/PlayerHand/PlayerHand";
+import Header from "../../components/Header/Header";
+
 import { useState } from "react";
 
 import styles from "./Home.module.css";
@@ -16,6 +18,7 @@ const Home = () => {
 
   return (
     <div className={styles.app_container}>
+      <Header />
       <div className={styles.play_container}>
         <PlayArea
           creatures={creatures}
