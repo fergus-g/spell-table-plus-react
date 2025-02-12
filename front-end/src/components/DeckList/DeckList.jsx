@@ -2,8 +2,30 @@ import { Button } from "@mui/material";
 import styles from "./DeckList.module.css";
 import { useState } from "react";
 
-export default function DeckList({ cards }) {
+export default function DeckList({
+  cards,
+  creatures,
+  enchantments,
+  lands,
+  artifacts,
+  setCreatures,
+  setEnchantments,
+  setLands,
+  setArtifacts,
+}) {
   let cardsData = cards?.data;
+
+  const sortCards = (card) => {
+    if (card.type_line.includes("Creature")) {
+      setCreatures((creatures) => [...creatures, card]);
+    } else if (card.type_line.includes("Enchantment")) {
+      setEnchantments((enchantments) => [...enchantments, card]);
+    } else if (card.type_line.includes("Land")) {
+      setLands((lands) => [...lands, card]);
+    } else if (card.type_line.includes("Artifact")) {
+      setArtifacts((artifacts) => [...artifacts, card]);
+    }
+  };
 
   const cardList = cardsData?.map((item, index) => {
     return (
@@ -25,6 +47,7 @@ export default function DeckList({ cards }) {
         img={item.image_uri}
         lang={item.lang}
         id={item.type_line}
+        onClick={() => sortCards(item)}
       >
         {item.name}
       </Button>

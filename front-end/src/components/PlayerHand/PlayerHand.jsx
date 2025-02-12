@@ -21,7 +21,7 @@ export default function PlayerHand({ setCards }) {
     if (modal === "show") {
       setLoading(true);
       try {
-        const fetchedDecks = await fetchDecks(2);
+        const fetchedDecks = await fetchDecks(user.user.id);
 
         setDecks(fetchedDecks.data);
       } catch (error) {

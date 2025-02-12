@@ -10,44 +10,26 @@
 .cardzone {
   display: flex;
   flex-direction: row; /* Create a horizontal layout for the top row */
+}
+
+.cardImg {
+  width: 20%;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.cardImg:hover {
+  transform: scale(2);
+}
+
+.cardImgContainer {
+  display: flex;
+  flex-wrap: wrap; /* Wrap the cards when they exceed the container width */
+  gap: 10px; /* Adds spacing between the cards */
+  padding: 10px;
   width: 100%;
-}
-
-.searchCard {
-  background-color: #13aa52;
-  justify-content: flex-end;
-  border: 1px solid #13aa52;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  outline: none;
-  outline: 0;
-  padding: 10px 25px;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-align: center;
-  transform: translateY(0);
-  transition: transform 150ms, box-shadow 150ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.searchCard:hover {
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
-  transform: translateY(-2px);
-}
-
-@media (min-width: 768px) {
-  .searchCard {
-    padding: 10px 30px;
-  }
+  justify-content: flex-start; /* Align the cards to the left */
+  overflow-y: auto; /* Enables vertical scrolling when the cards exceed height */
 }
 
 .creatureEnchantment {
@@ -66,25 +48,21 @@
   border-color: black;
   border-style: solid;
   padding: 10px;
+  height: 450px; /* Fixed height */
+  overflow-y: auto; /* Scroll vertically if cards exceed the height */
 }
 
 .enchantmentZone {
   flex: 2; /* 40% of the width */
   border-color: black;
   border-style: solid;
-  height: 450px;
   padding: 10px;
+  height: 450px; /* Fixed height */
+  overflow-y: auto; /* Scroll vertically if cards exceed the height */
 }
 
 .zoneHeading {
   text-align: center;
-}
-
-.cardImages {
-  opacity: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }
 
 .landsArtifacts {
@@ -96,7 +74,6 @@
   border-style: solid;
   border-color: aliceblue;
   background-color: rgba(240, 248, 255, 0.4);
-  height: 450px;
 }
 
 .landsZone {
@@ -104,12 +81,15 @@
   border-color: black;
   border-style: solid;
   padding: 10px;
+  height: 450px; /* Fixed height */
+  overflow-y: auto; /* Scroll vertically if cards exceed the height */
 }
 
 .artifactsZone {
   flex: 2; /* 40% of the width */
   border-color: black;
   border-style: solid;
-  height: 450px;
+  height: 450px; /* Fixed height */
   padding: 10px;
+  overflow-y: auto; /* Scroll vertically if cards exceed the height */
 }
