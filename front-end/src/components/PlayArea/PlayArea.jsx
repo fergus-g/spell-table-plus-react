@@ -51,6 +51,20 @@ export default function PlayArea({
   });
   return (
     <div className={styles.container}>
+      <img
+        src="/assets/Magic-The-Gathering.webp"
+        alt="Magic: The Gathering background"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+          opacity: 0.5,
+        }}
+      />
       <div className={styles.creatureEnchantment}>
         <div className={styles.creatureZone}>
           <h1 className={styles.zoneHeading}>Creatures</h1>

@@ -14,6 +14,8 @@ const Board = () => {
   const [lands, setLands] = useState([]);
   const [artifacts, setArtifacts] = useState([]);
 
+  console.log(cards);
+
   return (
     <div className={styles.app_container}>
       <Header setCards={setCards} />

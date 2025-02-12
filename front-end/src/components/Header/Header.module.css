@@ -5,5 +5,8 @@
 }
 .sliderContainer {
   display: flex;
-  margin-right: 20px;
+  margin: 20px;
+  padding-left: 20px;
+  scale: 2;
+  color: orange;
 }

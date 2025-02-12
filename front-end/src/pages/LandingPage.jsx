@@ -1,9 +1,12 @@
 import { Button, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 import styles from "./LandingPage.module.css";
 
 const LandingPage = () => {
+  const { loggedOut } = useUser();
+
   return (
     <div
       style={{
@@ -60,13 +63,20 @@ const LandingPage = () => {
               Spell-Table-Plus
             </Typography>
           </div>
+          {loggedOut ? (
+            <Typography variant="h6" fontWeight="bold">
+              Successfully Logged Out!
+            </Typography>
+          ) : (
+            ""
+          )}
           <Button
             style={{
               backgroundColor: "#FFB300",
               color: "black",
               fontWeight: "bold",
               "&:hover": {
-                backgroundColor: "#FFA000",
+                backgroundColor: "#oragne",
               },
             }}
             component={Link}
@@ -88,20 +98,25 @@ const LandingPage = () => {
           }}
         >
           <div className={styles.textContainer}>
-            <Typography variant="h3" fontWeight="bold" gutterBottom>
+            <Typography variant="h2" fontWeight="bold" gutterBottom>
               Welcome to Spell-Table-Plus
             </Typography>
-            <Typography variant="h5" color="textSecondary" paragraph>
+            <Typography
+              variant="h4"
+              color="orange"
+              fontWeight="bold"
+              paddingTop={5}
+            >
               An extension tool for Spell Table
             </Typography>
-            <Typography variant="body1" paragraph>
+            <Typography variant="body1" fontSize={20} paddingTop={5}>
               Don't have a camera? Can't understand opponent's board state? No
               problem, Spell Table Plus will track everyone's board state with
               simple clicks!
             </Typography>
             <Box mt={4}>
               <Typography variant="h6" fontWeight="bold">
-                Interested to try?
+                Interested?
               </Typography>
               <Button
                 variant="contained"

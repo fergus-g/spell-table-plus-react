@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Container, TextField, Button, Typography, Box } from "@mui/material";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Paper,
+} from "@mui/material";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -34,67 +41,142 @@ const SignUp = () => {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Box
-        sx={{
-          mt: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+    <>
+      <img
+        src="/assets/Magic-The-Gathering.webp"
+        alt="Magic: The Gathering background"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -1,
+          opacity: 0.5,
         }}
-      >
-        <Typography variant="h5">Sign Up</Typography>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Username"
-            margin="normal"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <TextField
-            fullWidth
-            label="Email"
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <TextField
-            fullWidth
-            label="Password"
-            type="password"
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {error && <Typography color="error">{error}</Typography>}
-          {success && <Typography color="primary">{success}</Typography>}
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
-            Sign Up
-          </Button>
-          <Typography
-            variant="h6"
-            style={{
-              marginTop: "10px",
+      />
+      <Container maxWidth="xs">
+        <Box
+          sx={{
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Paper
+            elevation={3}
+            sx={{
+              p: 4,
+              borderRadius: 3,
+              width: "100%",
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
             }}
           >
-            Already a user?{" "}
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "blue",
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
-              Login
-            </Link>
-          </Typography>
+              <Typography variant="h5" sx={{ mb: 3 }}>
+                Sign Up
+              </Typography>
+              <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{ width: "100%" }}
+              >
+                <TextField
+                  fullWidth
+                  label="Username"
+                  margin="normal"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  sx={{ backgroundColor: "white", borderRadius: 1 }}
+                />
+                <TextField
+                  fullWidth
+                  label="Email"
+                  margin="normal"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  sx={{ backgroundColor: "white", borderRadius: 1 }}
+                />
+                <TextField
+                  fullWidth
+                  label="Password"
+                  type="password"
+                  margin="normal"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  sx={{ backgroundColor: "white", borderRadius: 1 }}
+                />
+                {error && (
+                  <Typography color="error" sx={{ mt: 2 }}>
+                    {error}
+                  </Typography>
+                )}
+                {success && (
+                  <Typography color="primary" sx={{ mt: 2 }}>
+                    {success}
+                  </Typography>
+                )}
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Sign Up
+                </Button>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    textAlign: "center",
+                    mt: 2,
+                  }}
+                >
+                  Already a user?{" "}
+                  <Link
+                    to="/login"
+                    style={{
+                      textDecoration: "none",
+                      color: "blue",
+                    }}
+                  >
+                    Login
+                  </Link>
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    textAlign: "center",
+                    mt: 2,
+                  }}
+                >
+                  {" "}
+                  <Link
+                    to="/"
+                    style={{
+                      textDecoration: "none",
+                      color: "black",
+                    }}
+                  >
+                    &lt; Go Back
+                  </Link>
+                </Typography>
+              </Box>
+            </Box>
+          </Paper>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </>
   );
 };
 

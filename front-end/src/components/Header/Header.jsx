@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = ({ setCards }) => {
-  const { user } = useUser();
+  const { user, setLoggedOut } = useUser();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -42,9 +42,9 @@ const Header = ({ setCards }) => {
       });
 
       if (!response.ok) throw new Error("Logout failed");
-
+      setLoggedOut(true);
       localStorage.removeItem("user");
-      navigate("/landingpage");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }
@@ -54,7 +54,9 @@ const Header = ({ setCards }) => {
 
   return (
     <div className={styles.headerContainer}>
-      <SliderButton className={styles.sliderContainer} setCards={setCards} />
+      <div className={styles.sliderContainer}>
+        <SliderButton setCards={setCards} />
+      </div>
       <Box
         sx={{
           display: "flex",
@@ -64,12 +66,14 @@ const Header = ({ setCards }) => {
           paddingRight: "50px",
         }}
       >
-        <Typography sx={{ minWidth: 100 }}>{user.username}</Typography>
+        <Typography sx={{ minWidth: 100, mt: 2, fontSize: 25 }}>
+          {user.username}
+        </Typography>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2 }}
+            sx={{ ml: 4, mt: 2, scale: 2 }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}

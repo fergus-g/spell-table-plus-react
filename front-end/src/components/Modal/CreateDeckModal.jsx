@@ -1,10 +1,23 @@
 import { useState } from "react";
-import { Modal, Box, TextField, Button, Typography } from "@mui/material";
+import {
+  Modal,
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  FormGroup,
+} from "@mui/material";
+
 import { useUser } from "../../context/UserContext";
 
 const CreateDeckModal = ({ open, onClose, onCreate }) => {
   const [deckName, setDeckName] = useState("");
   const [deckList, setDeckList] = useState("");
+  const [commanderColors, setCommanderColors] = useState([]);
   const user = useUser();
 
   const handleCreate = () => {
@@ -12,10 +25,26 @@ const CreateDeckModal = ({ open, onClose, onCreate }) => {
       user_id: user.user.id,
       name: deckName,
       cards: deckList.split("\n").slice(0, 100),
+      colors: commanderColors,
     });
     setDeckName("");
     setDeckList("");
+    setCommanderColors(commanderColors);
     onClose();
+  };
+
+  const customCheckboxStyle = {
+    width: 40,
+    height: 40,
+    backgroundSize: "cover",
+    borderRadius: "50%",
+    padding: 0,
+    "& .MuiSvgIcon-root": {
+      display: "none",
+    },
+    "&.Mui-checked": {
+      border: "2px solid #1976d2",
+    },
   };
 
   return (
@@ -47,6 +76,110 @@ const CreateDeckModal = ({ open, onClose, onCreate }) => {
           value={deckName}
           onChange={(e) => setDeckName(e.target.value)}
         />
+
+        <FormControl
+          component="fieldset"
+          sx={{
+            justifyContent: "space-between",
+            padding: "10px 0",
+          }}
+        >
+          <FormLabel component="legend">Commander Colors</FormLabel>
+          <FormGroup
+            row
+            value={commanderColors}
+            onChange={(e) => setCommanderColors(e.target.value)}
+            sx={{
+              justifyContent: "space-between",
+              paddingLeft: "20px ",
+            }}
+          >
+            <FormControlLabel
+              value="white"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/plains.png")',
+                    backgroundColor: "#F8F6D8", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+            <FormControlLabel
+              value="blue"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/island.png")',
+                    backgroundColor: "#0E68AB", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+            <FormControlLabel
+              value="black"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/swamp.jpg")',
+                    backgroundColor: "#150B00", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+            <FormControlLabel
+              value="red"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/mountain.png")',
+                    backgroundColor: "#D3202A", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+            <FormControlLabel
+              value="green"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/forest.webp")',
+                    backgroundColor: "#00733E", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+            <FormControlLabel
+              value="colorless"
+              control={
+                <Checkbox
+                  sx={{
+                    ...customCheckboxStyle,
+                    backgroundImage:
+                      'url("/public/assets/manacosts/colourless.webp")',
+                    backgroundColor: "#CBC5C1", // Fallback color
+                  }}
+                />
+              }
+              label=""
+            />
+          </FormGroup>
+        </FormControl>
 
         <TextField
           label="Deck List (1 card per line)"

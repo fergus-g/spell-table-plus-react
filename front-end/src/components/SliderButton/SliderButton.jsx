@@ -6,7 +6,7 @@ import ShowDeckModal from "../Modal/ShowDecksModal";
 import useCreateDeck from "../../helpers/useCreateDeck";
 import fetchDecks from "../../helpers/fetchDecks";
 import { useUser } from "../../context/UserContext";
-import styles from "./SliderButton.module.css";
+import { SiMagic } from "react-icons/si";
 
 export default function SliderButton({ setCards }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function SliderButton({ setCards }) {
   };
 
   const clickHandler = async (modal) => {
-    toggleDrawer(false); // Close drawer on click
+    toggleDrawer(false);
 
     if (modal === "create") {
       setIsModalOpen(true);
@@ -46,8 +46,9 @@ export default function SliderButton({ setCards }) {
         onClick={() => toggleDrawer(true)}
         edge="start"
         color="inherit"
+        sx={{ mt: 1 }}
       >
-        <MenuIcon />
+        <SiMagic />
       </IconButton>
 
       {/* Drawer */}
