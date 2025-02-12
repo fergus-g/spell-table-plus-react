@@ -12,6 +12,7 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useUser } from "../../../context/UserContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,6 +28,27 @@ export default function AccountMenu() {
   if (!user) {
     return null; // Or render a loading spinner or alternative UI if needed
   }
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      // Call the backend to log out
+      const response = await fetch("http://localhost:5000/api/logout", {
+        method: "DELETE",
+        credentials: "include", // Include the cookies in the request
+      });
+
+      if (!response.ok) throw new Error("Logout failed");
+
+      // Clear local storage (if you're storing any user data there)
+      localStorage.removeItem("user");
+
+      // Redirect the user to the login page
+      navigate("/landingpage");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const userInitial = user.username.charAt(0);
 
@@ -103,7 +125,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={() => handleLogout()}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

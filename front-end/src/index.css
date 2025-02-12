@@ -1,0 +1,18 @@
+/* Reset margins and paddings for html, body, and root div */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border don't add to the element's total width/height */
+}
+
+html,
+body {
+  height: 100%; /* Ensure the body takes full height */
+  width: 100%; /* Ensure the body takes full width */
+}
+
+#root {
+  height: 100%; /* Ensure the root div spans full height */
+}

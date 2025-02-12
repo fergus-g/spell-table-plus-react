@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate, Link } from "react-router-dom";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import { useUser } from "../context/UserContext";
 
@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,6 +91,23 @@ const Login = () => {
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
             Login
           </Button>
+          <Typography
+            variant="h6"
+            style={{
+              marginTop: "10px",
+            }}
+          >
+            Not a user?{" "}
+            <Link
+              to="/signup"
+              style={{
+                textDecoration: "none",
+                color: "blue",
+              }}
+            >
+              Sign up
+            </Link>
+          </Typography>
         </Box>
       </Box>
     </Container>

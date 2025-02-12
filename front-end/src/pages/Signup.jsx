@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 
 const SignUp = () => {
@@ -74,6 +75,23 @@ const SignUp = () => {
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
             Sign Up
           </Button>
+          <Typography
+            variant="h6"
+            style={{
+              marginTop: "10px",
+            }}
+          >
+            Already a user?{" "}
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+                color: "blue",
+              }}
+            >
+              Login
+            </Link>
+          </Typography>
         </Box>
       </Box>
     </Container>

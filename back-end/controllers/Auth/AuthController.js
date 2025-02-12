@@ -100,6 +100,14 @@ export const registerUser = async (req, res) => {
   }
 };
 
+// In your controller file (e.g., AuthController.js)
+export const logoutUser = (req, res) => {
+  // Destroy session or clear authentication cookie
+  res.clearCookie("session_id"); // Clear the session cookie
+
+  res.status(200).json({ message: "Logged out successfully" });
+};
+
 export const checkSession = (req, res) => {
   const token = req.cookies.authToken;
   if (!token) return res.status(401).json({ loggedIn: false });
