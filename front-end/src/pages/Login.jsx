@@ -22,7 +22,6 @@ const Login = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      // Check if the response is OK (status code 200)
       if (!response.ok) {
         const data = await response.json();
         throw new Error(data.message || "Login failed");
@@ -32,7 +31,7 @@ const Login = () => {
       setUser({ id: data.user.id, username: data.user.username });
       console.log("Login successful!", data);
 
-      navigate("/"); // Navigate to the home page after successful login
+      navigate("/board");
     } catch (err) {
       setError(err.message);
     }

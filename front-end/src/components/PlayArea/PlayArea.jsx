@@ -51,7 +51,7 @@ export default function PlayArea({
   });
   return (
     <div className={styles.container}>
-      <div className={styles.cardzone}>
+      <div className={styles.creatureEnchantment}>
         <div className={styles.creatureZone}>
           <h1 className={styles.zoneHeading}>Creatures</h1>
           <div className={styles.cardImgContainer}>{creatureCards}</div>

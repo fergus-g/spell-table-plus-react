@@ -1,13 +1,13 @@
 import PlayArea from "../../components/PlayArea/PlayArea";
 import DeckList from "../../components/DeckList/DeckList";
-import PlayerHand from "../../components/PlayerHand/PlayerHand";
+import SliderButton from "../../components/SliderButton/SliderButton";
 import Header from "../../components/Header/Header";
 
 import { useState } from "react";
 
-import styles from "./Home.module.css";
+import styles from "./Board.module.css";
 
-const Home = () => {
+const Board = () => {
   const [cards, setCards] = useState([]);
   const [creatures, setCreatures] = useState([]);
   const [enchantments, setEnchantments] = useState([]);
@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <div className={styles.app_container}>
-      <Header />
+      <Header setCards={setCards} />
       <div className={styles.play_container}>
         <PlayArea
           creatures={creatures}
@@ -36,9 +36,8 @@ const Home = () => {
           setArtifacts={setArtifacts}
         />
       </div>
-      <PlayerHand setCards={setCards} />
     </div>
   );
 };
 
-export default Home;
+export default Board;

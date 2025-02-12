@@ -1,11 +1,13 @@
 import { Button, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
+import styles from "./LandingPage.module.css";
+
 const LandingPage = () => {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100%",
         position: "relative",
         color: "white",
         display: "flex",
@@ -14,7 +16,7 @@ const LandingPage = () => {
       }}
     >
       <img
-        src="../../public/assets/Magic-The-Gathering.webp"
+        src="/assets/Magic-The-Gathering.webp"
         alt="Magic: The Gathering background"
         style={{
           position: "absolute",
@@ -70,12 +72,14 @@ const LandingPage = () => {
             component={Link}
             to="/login"
           >
-            Sign In / Sign Up
+            Sign In
           </Button>
         </header>
 
         <main
           style={{
+            display: "flex",
+            justifyContent: "center",
             textAlign: "center",
             zIndex: 10,
             padding: "80px 20px",
@@ -83,38 +87,40 @@ const LandingPage = () => {
             alignContent: "center",
           }}
         >
-          <Typography variant="h3" fontWeight="bold" gutterBottom>
-            Welcome to Spell-Table-Plus
-          </Typography>
-          <Typography variant="h5" color="textSecondary" paragraph>
-            An extension tool for Spell Table
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Don't have a camera? Can't understand opponent's board state? No
-            problem, Spell Table Plus will track everyone's board state with
-            simple clicks!
-          </Typography>
-          <Box mt={4}>
-            <Typography variant="h6" fontWeight="bold">
-              Interested to try?
+          <div className={styles.textContainer}>
+            <Typography variant="h3" fontWeight="bold" gutterBottom>
+              Welcome to Spell-Table-Plus
             </Typography>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "#FFB300",
-                color: "black",
-                fontSize: "18px",
-                padding: "12px 40px",
-                "&:hover": {
-                  backgroundColor: "#FFA000",
-                },
-              }}
-              component={Link}
-              to="/signup"
-            >
-              Sign Up Now
-            </Button>
-          </Box>
+            <Typography variant="h5" color="textSecondary" paragraph>
+              An extension tool for Spell Table
+            </Typography>
+            <Typography variant="body1" paragraph>
+              Don't have a camera? Can't understand opponent's board state? No
+              problem, Spell Table Plus will track everyone's board state with
+              simple clicks!
+            </Typography>
+            <Box mt={4}>
+              <Typography variant="h6" fontWeight="bold">
+                Interested to try?
+              </Typography>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#FFB300",
+                  color: "black",
+                  fontSize: "18px",
+                  padding: "12px 40px",
+                  "&:hover": {
+                    backgroundColor: "#FFA000",
+                  },
+                }}
+                component={Link}
+                to="/signup"
+              >
+                Sign Up Now
+              </Button>
+            </Box>
+          </div>
         </main>
 
         <footer

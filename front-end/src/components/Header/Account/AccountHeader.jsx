@@ -8,53 +8,58 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { useUser } from "../../../context/UserContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function AccountMenu() {
+  const { user } = useUser();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  // Check if user is available before rendering
+  if (!user) {
+    return <div>Loading...</div>; // Handle loading state
+  }
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { user } = useUser();
 
-  if (!user) {
-    return null; // Or render a loading spinner or alternative UI if needed
-  }
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      // Call the backend to log out
       const response = await fetch("http://localhost:5000/api/logout", {
         method: "DELETE",
-        credentials: "include", // Include the cookies in the request
+        credentials: "include",
       });
 
       if (!response.ok) throw new Error("Logout failed");
 
-      // Clear local storage (if you're storing any user data there)
       localStorage.removeItem("user");
-
-      // Redirect the user to the login page
       navigate("/landingpage");
     } catch (err) {
       console.error(err);
     }
   };
 
-  const userInitial = user.username.charAt(0);
+  const userInitial = user?.username.charAt(0) || "";
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          textAlign: "center",
+          justifyContent: "flex-end",
+          paddingRight: "50px",
+        }}
+      >
         <Typography sx={{ minWidth: 100 }}>{user.username}</Typography>
         <Tooltip title="Account settings">
           <IconButton
@@ -110,22 +115,19 @@ export default function AccountMenu() {
           <Avatar /> Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Avatar /> My account
+          <ListItemIcon>
+            <Avatar fontSize="small" />
+          </ListItemIcon>
+          Create Deck
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Avatar fontSize="small" />
+          </ListItemIcon>
+          Show Deck
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={() => handleLogout()}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

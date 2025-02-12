@@ -1,7 +1,9 @@
-headerContainer {
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
-img {
-  width: 100vw;
-  max-height: 200px;
+.sliderContainer {
+  display: flex;
+  margin-right: 20px;
 }

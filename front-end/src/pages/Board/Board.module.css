@@ -1,11 +1,11 @@
 .app_container {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
 }
 
 .play_container {
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex: 8;
 }
