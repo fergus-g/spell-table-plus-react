@@ -36,6 +36,14 @@ export const loginUser = async (req, res) => {
       { expiresIn: "1h" }
     );
 
+    const isSecure = process.env.NODE_ENV === "production";
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: isSecure,
+      sameSite: "Strict",
+      maxAge: 60 * 60 * 1000,
+    });
+
     res.json({
       message: "Login successful",
       token,
@@ -89,5 +97,17 @@ export const registerUser = async (req, res) => {
   } catch (error) {
     console.error("Sign-up error:", error);
     res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const checkSession = (req, res) => {
+  const token = req.cookies.authToken;
+  if (!token) return res.status(401).json({ loggedIn: false });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ loggedIn: true, user: decoded });
+  } catch (err) {
+    res.status(401).json({ loggedIn: false });
   }
 };

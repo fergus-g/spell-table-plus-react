@@ -1,9 +1,11 @@
+import AccountHeader from "./Account/AccountHeader.jsx";
+
 import styles from "./Header.module.css";
 
 const Header = () => {
   return (
     <div className={styles.headerContainer}>
-      <img className={styles.img} src="../../../public/assets/header.png" />
+      <AccountHeader />
     </div>
   );
 };
