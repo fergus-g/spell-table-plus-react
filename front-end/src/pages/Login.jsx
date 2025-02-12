@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 import { useUser } from "../context/UserContext";
@@ -17,21 +17,46 @@ const Login = () => {
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
+      // Check if the response is OK (status code 200)
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.message || "Login failed");
+      }
+
       const data = await response.json();
       setUser({ id: data.user.id, username: data.user.username });
-      if (!response.ok) throw new Error(data.message || "Login failed");
-
       console.log("Login successful!", data);
 
-      navigate("/");
+      navigate("/"); // Navigate to the home page after successful login
     } catch (err) {
       setError(err.message);
     }
   };
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const response = await fetch(
+        "http://localhost:5000/api/auth/check-session",
+        {
+          credentials: "include",
+        }
+      );
+
+      const data = await response.json();
+      if (data.loggedIn) {
+        console.log("User is logged in:", data.user);
+      } else {
+        console.log("User is not logged in");
+      }
+    };
+
+    checkAuth();
+  }, [setUser]);
 
   return (
     <Container maxWidth="xs">

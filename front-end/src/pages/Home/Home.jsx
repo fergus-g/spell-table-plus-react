@@ -14,8 +14,6 @@ const Home = () => {
   const [lands, setLands] = useState([]);
   const [artifacts, setArtifacts] = useState([]);
 
-  console.log(creatures);
-
   return (
     <div className={styles.app_container}>
       <Header />
