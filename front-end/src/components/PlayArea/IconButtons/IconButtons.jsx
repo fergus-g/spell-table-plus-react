@@ -1,10 +1,10 @@
 import styles from "./iconButtons.module.css";
 
-const IconButtons = () => {
+const IconButtons = ({ onTap, tapped }) => {
   return (
     <div className={styles.container}>
       <button>Graveyard</button>
-      <button>Tap</button>
+      <button onClick={() => onTap(!tapped)}>Tap</button>
       <button>Exile</button>
     </div>
   );
