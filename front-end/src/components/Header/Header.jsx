@@ -21,9 +21,8 @@ const Header = ({ setCards }) => {
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
 
-  // Check if user is available before rendering
   if (!user) {
-    return <div>Loading...</div>; // Handle loading state
+    return <div>Loading...</div>;
   }
 
   const handleClick = (event) => {
