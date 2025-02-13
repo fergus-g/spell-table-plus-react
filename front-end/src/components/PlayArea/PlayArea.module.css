@@ -40,6 +40,21 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.creatureZone {
+  border-right: 0.125rem solid rgb(161, 161, 161);
+}
+.enchantmentZone {
+  border-left: 0.125rem solid rgb(161, 161, 161);
+}
+.landsZone {
+  border-right: 0.125rem solid rgb(161, 161, 161);
+  border-top: 0.25rem solid rgb(161, 161, 161);
+}
+.artifactsZone {
+  border-left: 0.125rem solid rgb(161, 161, 161);
+  border-top: 0.25rem solid rgb(161, 161, 161);
+}
+
 .creatureZone,
 .enchantmentZone,
 .landsZone,
