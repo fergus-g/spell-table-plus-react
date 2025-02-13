@@ -15,11 +15,6 @@
   transform-origin: center;
 }
 
-.rotated {
-  transform: rotate(90deg);
-  transition: transform 0.3s ease-in-out;
-}
-
 /* .cardImg:hover {
   transform: scale(2);
 } */

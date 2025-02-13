@@ -15,6 +15,10 @@ export default function PlayArea({
     setClickedId((prevId) => (prevId === id ? null : id));
   };
 
+  const untapHandler = () => {
+    setTappedCards({});
+  };
+
   const toggleTapped = (id) => {
     setTappedCards((prev) => ({
       ...prev,
@@ -125,6 +129,7 @@ export default function PlayArea({
           opacity: 0.5,
         }}
       />
+      <button onClick={() => untapHandler()}>Untap All</button>
       <div className={styles.creatureEnchantment}>
         <div className={styles.creatureZone}>
           <h1 className={styles.zoneHeading}>Creatures</h1>
