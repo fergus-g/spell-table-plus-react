@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Drawer, IconButton, Box } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import CreateDeckModal from "../Modal/CreateDeckModal";
 import ShowDeckModal from "../Modal/ShowDecksModal";
+import ActionModal from "../Modal/ActionModal";
 import useCreateDeck from "../../helpers/useCreateDeck";
 import fetchDecks from "../../helpers/fetchDecks";
 import { useUser } from "../../context/UserContext";
@@ -11,17 +11,19 @@ import { SiMagic } from "react-icons/si";
 export default function SliderButton({ setCards }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isActionModalOpen, setIsActionModalOpen] = useState(true);
   const [isDeckModalOpen, setIsDeckModalOpen] = useState(false);
   const [decks, setDecks] = useState([]);
   const [loading, setLoading] = useState(false);
   const user = useUser();
 
-  const toggleDrawer = (open) => {
-    setIsDrawerOpen(open);
+  const toggleDrawer = () => {
+    setIsActionModalOpen(true);
   };
 
   const clickHandler = async (modal) => {
     toggleDrawer(false);
+    setIsActionModalOpen(false);
 
     if (modal === "create") {
       setIsModalOpen(true);
@@ -43,7 +45,7 @@ export default function SliderButton({ setCards }) {
     <div>
       {/* Burger Icon to open the drawer */}
       <IconButton
-        onClick={() => toggleDrawer(true)}
+        onClick={() => toggleDrawer()}
         edge="start"
         color="inherit"
         sx={{ mt: 1 }}
@@ -87,6 +89,12 @@ export default function SliderButton({ setCards }) {
       </Drawer>
 
       {/* Modals */}
+      <ActionModal
+        open={isActionModalOpen}
+        onClose={() => setIsActionModalOpen(false)}
+        openCreate={() => clickHandler("create")}
+        openDecks={() => clickHandler("show")}
+      />
       <CreateDeckModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
