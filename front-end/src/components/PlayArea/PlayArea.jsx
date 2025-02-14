@@ -1,3 +1,5 @@
+import { useState } from "react";
+import IconButtons from "./IconButtons/IconButtons.jsx";
 import styles from "./PlayArea.module.css";
 
 export default function PlayArea({
@@ -6,49 +8,55 @@ export default function PlayArea({
   lands,
   artifacts,
 }) {
-  const creatureCards = creatures?.map((creature) => {
-    return (
-      <img
-        className={styles.cardImg}
-        key={creature.id}
-        src={creature.image_uri}
-        alt={creature.name}
-      />
-    );
-  });
+  const [clickedId, setClickedId] = useState(null);
+  const [tappedCards, setTappedCards] = useState({});
 
-  const enchantmentCards = enchantments?.map((enchantment) => {
-    return (
-      <img
-        className={styles.cardImg}
-        key={enchantment.id}
-        src={enchantment.image_uri}
-        alt={enchantment.name}
-      />
-    );
-  });
+  const clickHandler = (id) => {
+    setClickedId((prevId) => (prevId === id ? null : id));
+  };
 
-  const landCards = lands?.map((land) => {
-    return (
-      <img
-        className={styles.cardImg}
-        key={land.id}
-        src={land.image_uri}
-        alt={land.name}
-      />
-    );
-  });
+  const untapHandler = () => {
+    setTappedCards({});
+  };
 
-  const artifactCards = artifacts?.map((artifact) => {
-    return (
-      <img
-        className={styles.cardImg}
-        key={artifact.id}
-        src={artifact.image_uri}
-        alt={artifact.name}
-      />
-    );
-  });
+  const toggleTapped = (id) => {
+    console.log("Tapped cards:", tappedCards);
+    console.log(id);
+    setTappedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const CardList = ({
+    cards,
+    tappedCards,
+    clickedId,
+    clickHandler,
+    toggleTapped,
+    styles,
+  }) => {
+    return cards?.map((card) => (
+      <>
+        <img
+          key={card.id}
+          className={`${styles.cardImg} ${
+            tappedCards[card.id] ? styles.rotated : ""
+          }`}
+          src={card.image_uri}
+          alt={card.name}
+          onClick={() => clickHandler(card.id)}
+        />
+        {clickedId === card.id ? (
+          <IconButtons
+            tapped={tappedCards[card.id] || false}
+            onTap={() => toggleTapped(card.id)} // Use toggleTapped here
+          />
+        ) : null}
+      </>
+    ));
+  };
+
   return (
     <div className={styles.container}>
       <img
@@ -59,30 +67,67 @@ export default function PlayArea({
           top: 0,
           left: 0,
           width: "100%",
-          height: "100%",
+          height: "120%",
           objectFit: "cover",
           zIndex: -1,
           opacity: 0.5,
         }}
       />
+      <button onClick={() => untapHandler()}>Untap All</button>
       <div className={styles.creatureEnchantment}>
         <div className={styles.creatureZone}>
           <h1 className={styles.zoneHeading}>Creatures</h1>
-          <div className={styles.cardImgContainer}>{creatureCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={creatures}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
         <div className={styles.enchantmentZone}>
           <h1 className={styles.zoneHeading}>Enchantments</h1>
-          <div className={styles.cardImgContainer}>{enchantmentCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={enchantments}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
       </div>
       <div className={styles.landsArtifacts}>
         <div className={styles.landsZone}>
           <h1 className={styles.zoneHeading}>Lands</h1>
-          <div className={styles.cardImgContainer}>{landCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={lands}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
         <div className={styles.artifactsZone}>
           <h1 className={styles.zoneHeading}>Artifacts</h1>
-          <div className={styles.cardImgContainer}>{artifactCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={artifacts}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
       </div>
     </div>

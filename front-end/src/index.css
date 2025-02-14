@@ -12,6 +12,8 @@ html,
 body {
   height: 100%; /* Ensure the body takes full height */
   width: 100%; /* Ensure the body takes full width */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 #root {

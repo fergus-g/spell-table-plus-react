@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
+import Graveyard from "../Graveyard/Graveyard";
+
 import styles from "./DeckList.module.css";
-import { useState } from "react";
 
 export default function DeckList({
   cards,
@@ -29,30 +30,37 @@ export default function DeckList({
 
   const cardList = cardsData?.map((item, index) => {
     return (
-      <Button
-        sx={{
-          alignSelf: "center",
-          position: "relative",
-          width: "250px",
-          textAlign: "center",
-          marginTop: "10px",
-          color: "white",
-          textTransform: "none",
-          backgroundColor: "grey.800",
-          "&:hover": {
-            backgroundColor: "grey.700",
-          },
-        }}
-        key={index}
-        img={item.image_uri}
-        lang={item.lang}
-        id={item.type_line}
-        onClick={() => sortCards(item)}
-      >
-        {item.name}
-      </Button>
+      <>
+        <Button
+          sx={{
+            alignSelf: "center",
+            position: "relative",
+            width: "250px",
+            textAlign: "center",
+            marginTop: "10px",
+            color: "white",
+            textTransform: "none",
+            backgroundColor: "grey.800",
+            "&:hover": {
+              backgroundColor: "grey.700",
+            },
+          }}
+          key={index}
+          img={item.image_uri}
+          lang={item.lang}
+          id={item.type_line}
+          onClick={() => sortCards(item)}
+        >
+          {item.name}
+        </Button>
+      </>
     );
   });
 
-  return <div className={styles.container}>{cardList}</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.deckcontainer}>{cardList}</div>
+      <Graveyard className={styles.graveyard} />
+    </div>
+  );
 }

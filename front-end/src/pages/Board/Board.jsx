@@ -1,6 +1,5 @@
 import PlayArea from "../../components/PlayArea/PlayArea";
 import DeckList from "../../components/DeckList/DeckList";
-import SliderButton from "../../components/SliderButton/SliderButton";
 import Header from "../../components/Header/Header";
 
 import { useState } from "react";
@@ -13,8 +12,6 @@ const Board = () => {
   const [enchantments, setEnchantments] = useState([]);
   const [lands, setLands] = useState([]);
   const [artifacts, setArtifacts] = useState([]);
-
-  console.log(cards);
 
   return (
     <div className={styles.app_container}>
