@@ -9,10 +9,16 @@
 }
 
 .cardImg {
-  width: 30%;
+  width: 25%;
   flex-direction: row;
   transition: transform 0.3s ease;
   transform-origin: center;
+  border-radius: 10px;
+}
+
+.rotated {
+  transform: rotate(90deg);
+  margin-left: 40px; /* Adjust the rotation as needed */
 }
 
 /* .cardImg:hover {

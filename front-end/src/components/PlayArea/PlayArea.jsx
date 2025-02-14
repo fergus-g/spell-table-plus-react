@@ -20,98 +20,42 @@ export default function PlayArea({
   };
 
   const toggleTapped = (id) => {
+    console.log("Tapped cards:", tappedCards);
+    console.log(id);
     setTappedCards((prev) => ({
       ...prev,
-      [id]: !prev[id], // Toggle tapped state for specific card ID
+      [id]: !prev[id],
     }));
   };
 
-  const creatureCards = creatures?.map((creature) => {
-    return (
+  const CardList = ({
+    cards,
+    tappedCards,
+    clickedId,
+    clickHandler,
+    toggleTapped,
+    styles,
+  }) => {
+    return cards?.map((card) => (
       <>
         <img
+          key={card.id}
           className={`${styles.cardImg} ${
-            tappedCards[creature.id] ? styles.rotated : ""
+            tappedCards[card.id] ? styles.rotated : ""
           }`}
-          key={creature.id}
-          src={creature.image_uri}
-          alt={creature.name}
-          onClick={() => clickHandler(creature.id)}
+          src={card.image_uri}
+          alt={card.name}
+          onClick={() => clickHandler(card.id)}
         />
-        {clickedId === creature.id ? (
+        {clickedId === card.id ? (
           <IconButtons
-            tapped={tappedCards[creature.id] || false}
-            onTap={() => toggleTapped(creature.id)}
+            tapped={tappedCards[card.id] || false}
+            onTap={() => toggleTapped(card.id)} // Use toggleTapped here
           />
         ) : null}
       </>
-    );
-  });
-
-  const enchantmentsCards = enchantments?.map((enchantments) => {
-    return (
-      <>
-        <img
-          className={`${styles.cardImg} ${
-            tappedCards[enchantments.id] ? styles.rotated : ""
-          }`}
-          key={enchantments.id}
-          src={enchantments.image_uri}
-          alt={enchantments.name}
-          onClick={() => clickHandler(enchantments.id)}
-        />
-        {clickedId === enchantments.id ? (
-          <IconButtons
-            tapped={tappedCards[enchantments.id] || false}
-            onTap={() => toggleTapped(enchantments.id)}
-          />
-        ) : null}
-      </>
-    );
-  });
-
-  const landsCards = lands?.map((lands) => {
-    return (
-      <>
-        <img
-          className={`${styles.cardImg} ${
-            tappedCards[lands.id] ? styles.rotated : ""
-          }`}
-          key={lands.id}
-          src={lands.image_uri}
-          alt={lands.name}
-          onClick={() => clickHandler(lands.id)}
-        />
-        {clickedId === lands.id ? (
-          <IconButtons
-            tapped={tappedCards[lands.id] || false}
-            onTap={() => toggleTapped(lands.id)}
-          />
-        ) : null}
-      </>
-    );
-  });
-  const artifactCards = artifacts?.map((artifact) => {
-    return (
-      <>
-        <img
-          className={`${styles.cardImg} ${
-            tappedCards[artifact.id] ? styles.rotated : ""
-          }`}
-          key={artifact.id}
-          src={artifact.image_uri}
-          alt={artifact.name}
-          onClick={() => clickHandler(artifact.id)}
-        />
-        {clickedId === artifact.id ? (
-          <IconButtons
-            tapped={tappedCards[artifact.id] || false}
-            onTap={() => toggleTapped(artifact.id)}
-          />
-        ) : null}
-      </>
-    );
-  });
+    ));
+  };
 
   return (
     <div className={styles.container}>
@@ -133,21 +77,57 @@ export default function PlayArea({
       <div className={styles.creatureEnchantment}>
         <div className={styles.creatureZone}>
           <h1 className={styles.zoneHeading}>Creatures</h1>
-          <div className={styles.cardImgContainer}>{creatureCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={creatures}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
         <div className={styles.enchantmentZone}>
           <h1 className={styles.zoneHeading}>Enchantments</h1>
-          <div className={styles.cardImgContainer}>{enchantmentsCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={enchantments}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
       </div>
       <div className={styles.landsArtifacts}>
         <div className={styles.landsZone}>
           <h1 className={styles.zoneHeading}>Lands</h1>
-          <div className={styles.cardImgContainer}>{landsCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={lands}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
         <div className={styles.artifactsZone}>
           <h1 className={styles.zoneHeading}>Artifacts</h1>
-          <div className={styles.cardImgContainer}>{artifactCards}</div>
+          <div className={styles.cardImgContainer}>
+            <CardList
+              cards={artifacts}
+              tappedCards={tappedCards}
+              clickedId={clickedId}
+              clickHandler={clickHandler}
+              toggleTapped={toggleTapped}
+              styles={styles}
+            />
+          </div>
         </div>
       </div>
     </div>
