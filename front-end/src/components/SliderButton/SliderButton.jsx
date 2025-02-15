@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Drawer, IconButton, Box } from "@mui/material";
+import { IconButton } from "@mui/material";
 import CreateDeckModal from "../Modal/CreateDeckModal";
 import ShowDeckModal from "../Modal/ShowDecksModal";
 import ActionModal from "../Modal/ActionModal";
@@ -9,7 +9,6 @@ import { useUser } from "../../context/UserContext";
 import { SiMagic } from "react-icons/si";
 
 export default function SliderButton({ setCards }) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isActionModalOpen, setIsActionModalOpen] = useState(true);
   const [isDeckModalOpen, setIsDeckModalOpen] = useState(false);
@@ -52,41 +51,6 @@ export default function SliderButton({ setCards }) {
       >
         <SiMagic />
       </IconButton>
-
-      {/* Drawer */}
-      <Drawer
-        anchor="left"
-        open={isDrawerOpen}
-        onClose={() => toggleDrawer(false)}
-        variant="temporary"
-        sx={{
-          "& .MuiDrawer-paper": {
-            minWidth: 200, // Adjust width to fit content
-            height: 150,
-            padding: "16px",
-            boxSizing: "border-box",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          },
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "16px", // Ensures proper spacing
-          }}
-        >
-          <Button variant="contained" onClick={() => clickHandler("create")}>
-            Create Deck
-          </Button>
-          <Button variant="contained" onClick={() => clickHandler("show")}>
-            Show Decks
-          </Button>
-        </Box>
-      </Drawer>
 
       {/* Modals */}
       <ActionModal

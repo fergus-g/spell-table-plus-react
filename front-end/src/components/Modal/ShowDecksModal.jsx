@@ -87,6 +87,11 @@ const ShowDeckModal = ({
   onDelete,
   setCards,
 }) => {
+  const handleDeckClick = async (deckId) => {
+    setCards(await fetchCards(deckId));
+    onClose(); // Close the modal after setting cards
+  };
+
   return (
     <Modal open={open} onClose={onClose} aria-labelledby="create-deck-modal">
       <Box
@@ -141,7 +146,7 @@ const ShowDeckModal = ({
                 name={deck.name}
                 colors={deck.colors || []}
                 onDelete={onDelete}
-                onClick={async () => setCards(await fetchCards(deck.id))}
+                onClick={() => handleDeckClick(deck.id)}
               />
             ))
           ) : (
