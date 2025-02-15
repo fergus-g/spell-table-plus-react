@@ -9,7 +9,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: 400,
   height: 500,
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -51,7 +51,7 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
           }}
         >
           {" "}
-          <Box
+          {/* <Box
             component="img"
             src="../../../public/assets/MagicLogo.jpg"
             alt="Description"
@@ -61,7 +61,7 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
               maxHeight: "100%",
               objectFit: "contain",
             }}
-          />
+          /> */}
         </Box>
 
         {/* Buttons container */}
@@ -71,7 +71,6 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
             display: "flex",
             flexDirection: "column",
             gap: 2,
-            marginTop: "auto",
           }}
         >
           <Button
@@ -86,7 +85,7 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
             color="secondary"
             onClick={() => openDecks()}
           >
-            Create Deck> Show Decks
+            Show Decks
           </Button>
           <Button variant="contained" color="success">
             Play
