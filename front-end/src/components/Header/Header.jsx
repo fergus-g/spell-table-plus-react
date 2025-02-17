@@ -91,7 +91,9 @@ const Header = ({ setCards }) => {
             paddingRight: "50px",
           }}
         >
-          <Typography sx={{ minWidth: 100, mt: 2, fontSize: 25 }}>
+          <Typography
+            sx={{ minWidth: 100, mt: 2, fontSize: 25, color: "white" }}
+          >
             {user.username}
           </Typography>
           <Tooltip title="Account settings">

@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import React from "react";
 import Graveyard from "../Graveyard/Graveyard";
 
 import styles from "./DeckList.module.css";
@@ -9,6 +10,9 @@ export default function DeckList({
   enchantments,
   lands,
   artifacts,
+  graveyard,
+  exile,
+  setGraveyard,
   setCreatures,
   setEnchantments,
   setLands,
@@ -60,7 +64,11 @@ export default function DeckList({
   return (
     <div className={styles.container}>
       <div className={styles.deckcontainer}>{cardList}</div>
-      <Graveyard className={styles.graveyard} />
+      <Graveyard
+        className={styles.graveyard}
+        graveyard={graveyard}
+        exile={exile}
+      />
     </div>
   );
 }

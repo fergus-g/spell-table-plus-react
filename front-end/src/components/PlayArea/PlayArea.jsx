@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import IconButtons from "./IconButtons/IconButtons.jsx";
 import styles from "./PlayArea.module.css";
 
@@ -7,6 +7,12 @@ export default function PlayArea({
   enchantments,
   lands,
   artifacts,
+  setCreatures,
+  setEnchantments,
+  setLands,
+  setArtifacts,
+  setGraveyard,
+  setExile,
 }) {
   const [clickedId, setClickedId] = useState(null);
   const [tappedCards, setTappedCards] = useState({});
@@ -15,13 +21,23 @@ export default function PlayArea({
     setClickedId((prevId) => (prevId === id ? null : id));
   };
 
+  const removeFromPlayArea = (category, id) => {
+    if (category.includes("Creature")) {
+      setCreatures((prev) => prev.filter((card) => card.id !== id));
+    } else if (category.includes("Enchantment")) {
+      setEnchantments((prev) => prev.filter((card) => card.id !== id));
+    } else if (category.includes("Land")) {
+      setLands((prev) => prev.filter((card) => card.id !== id));
+    } else if (category.includes("Artifact")) {
+      setArtifacts((prev) => prev.filter((card) => card.id !== id));
+    }
+  };
+
   const untapHandler = () => {
     setTappedCards({});
   };
 
   const toggleTapped = (id) => {
-    console.log("Tapped cards:", tappedCards);
-    console.log(id);
     setTappedCards((prev) => ({
       ...prev,
       [id]: !prev[id],
@@ -50,7 +66,13 @@ export default function PlayArea({
         {clickedId === card.id ? (
           <IconButtons
             tapped={tappedCards[card.id] || false}
-            onTap={() => toggleTapped(card.id)} // Use toggleTapped here
+            onTap={() => toggleTapped(card.id)}
+            exile={card}
+            setExile={setExile}
+            graveyard={card}
+            setGraveyard={setGraveyard}
+            removeFromPlayArea={removeFromPlayArea}
+            clickedId={clickedId}
           />
         ) : null}
       </>
