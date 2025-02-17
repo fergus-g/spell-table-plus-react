@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column; /* Stack top and bottom rows */
+  flex: 14;
+  height: 100%;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.cardImg {
+  width: 25%;
+  flex-direction: row;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  border-radius: 10px;
+}

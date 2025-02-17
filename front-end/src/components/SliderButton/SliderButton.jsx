@@ -7,6 +7,7 @@ import useCreateDeck from "../../helpers/useCreateDeck";
 import fetchDecks from "../../helpers/fetchDecks";
 import { useUser } from "../../context/UserContext";
 import { SiMagic } from "react-icons/si";
+import styles from "./SliderButton.module.css";
 
 export default function SliderButton({ setCards }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,9 +48,9 @@ export default function SliderButton({ setCards }) {
         onClick={() => toggleDrawer()}
         edge="start"
         color="inherit"
-        sx={{ mt: 1 }}
+        className={styles.iconButton}
       >
-        <SiMagic />
+        <SiMagic className={styles.iconBtn} />
       </IconButton>
 
       {/* Modals */}
