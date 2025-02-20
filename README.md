@@ -1,6 +1,10 @@
 # Spell Table Plus
 
-Spell Table Plus is a web application designed to enhance tabletop card gaming experiences by providing virtual deck management, multiplayer sessions, and real-time game interactions.
+Spell Table Plus is a web application designed to enhance Commander tabletop card gaming experiences by providing virtual deck management, multiplayer sessions, and real-time game interactions.
+
+## Why It Was Built
+
+When playing Commander on Spell Table, it can be difficult to understand other players' board states due to factors such as camera quality or the arrangement of cards on the table. Spell Table Plus aims to solve this problem by offering better deck management, real-time updates, and the ability to view other players' screens clearly, making the game experience more seamless and enjoyable.
 
 ## Features
 
