@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
+import PropTypes from "prop-types";
 import React from "react";
 import Graveyard from "../Graveyard/Graveyard";
 
 import styles from "./DeckList.module.css";
 
 export default function DeckList({
-  cards,git 
+  cards,
   graveyard,
   exile,
   setCreatures,
@@ -67,3 +68,13 @@ export default function DeckList({
     </div>
   );
 }
+
+DeckList.propTypes = {
+  cards: PropTypes.array,
+  graveyard: PropTypes.array,
+  exile: PropTypes.array,
+  setCreatures: PropTypes.func(),
+  setEnchantments: PropTypes.func(),
+  setLands: PropTypes.func(),
+  setArtifacts: PropTypes.func(),
+};

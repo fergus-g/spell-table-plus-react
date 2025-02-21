@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import GraveyardModal from "./GraveyardModal.jsx/GraveyardModal";
 import { useState } from "react";
 
@@ -34,3 +35,8 @@ export default function Graveyard({ graveyard, exile }) {
     </>
   );
 }
+
+Graveyard.propTypes = {
+  graveyard: PropTypes.array,
+  exile: PropTypes.array,
+};

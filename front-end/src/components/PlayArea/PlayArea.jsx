@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import IconButtons from "./IconButtons/IconButtons.jsx";
 import styles from "./PlayArea.module.css";
 
@@ -155,3 +156,16 @@ export default function PlayArea({
     </div>
   );
 }
+
+PlayArea.propTypes = {
+  creatures: PropTypes.array,
+  enchantments: PropTypes.array,
+  lands: PropTypes.array,
+  artifacts: PropTypes.array,
+  setCreatures: PropTypes.func,
+  setEnchantments: PropTypes.func,
+  setLands: PropTypes.func,
+  setArtifacts: PropTypes.func,
+  setGraveyard: PropTypes.func,
+  setExile: PropTypes.func,
+};

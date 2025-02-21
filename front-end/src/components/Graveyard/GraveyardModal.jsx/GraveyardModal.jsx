@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -23,14 +24,7 @@ const style = {
   overflow: "hidden",
 };
 
-export default function GraveyardModal({
-  open,
-  onClose,
-  openCreate,
-  openDecks,
-  graveyard,
-  exile,
-}) {
+export default function GraveyardModal({ open, onClose, graveyard, exile }) {
   console.log("Graveyard:", graveyard);
   console.log("Exile:", exile);
   return (
@@ -85,3 +79,10 @@ export default function GraveyardModal({
     </Modal>
   );
 }
+
+GraveyardModal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func(),
+  graveyard: PropTypes.array,
+  exile: PropTypes.array,
+};

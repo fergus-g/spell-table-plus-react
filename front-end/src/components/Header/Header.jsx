@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -188,3 +189,7 @@ const Header = ({ setCards }) => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  setCards: PropTypes.func(),
+};
