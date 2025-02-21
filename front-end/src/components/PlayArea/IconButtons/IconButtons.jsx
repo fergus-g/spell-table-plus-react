@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./iconButtons.module.css";
+import styles from "./IconButtons.module.css";
 
 const IconButtons = ({
   onTap,
