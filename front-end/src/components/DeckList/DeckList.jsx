@@ -6,13 +6,8 @@ import styles from "./DeckList.module.css";
 
 export default function DeckList({
   cards,
-  creatures,
-  enchantments,
-  lands,
-  artifacts,
   graveyard,
   exile,
-  setGraveyard,
   setCreatures,
   setEnchantments,
   setLands,
