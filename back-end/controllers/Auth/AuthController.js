@@ -116,6 +116,7 @@ export const checkSession = (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.json({ loggedIn: true, user: decoded });
   } catch (err) {
+    console.error(err);
     res.status(401).json({ loggedIn: false });
   }
 };
