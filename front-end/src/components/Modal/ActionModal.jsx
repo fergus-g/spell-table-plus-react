@@ -99,7 +99,7 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
 
 BasicModal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func(),
-  openCreate: PropTypes.func(),
-  openDecks: PropTypes.func(),
+  onClose: PropTypes.func,
+  openCreate: PropTypes.func,
+  openDecks: PropTypes.func,
 };

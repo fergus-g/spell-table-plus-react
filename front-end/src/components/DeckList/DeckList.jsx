@@ -73,8 +73,8 @@ DeckList.propTypes = {
   cards: PropTypes.array,
   graveyard: PropTypes.array,
   exile: PropTypes.array,
-  setCreatures: PropTypes.func(),
-  setEnchantments: PropTypes.func(),
-  setLands: PropTypes.func(),
-  setArtifacts: PropTypes.func(),
+  setCreatures: PropTypes.func,
+  setEnchantments: PropTypes.func,
+  setLands: PropTypes.func,
+  setArtifacts: PropTypes.func,
 };

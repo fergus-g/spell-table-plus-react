@@ -191,5 +191,5 @@ const Header = ({ setCards }) => {
 export default Header;
 
 Header.propTypes = {
-  setCards: PropTypes.func(),
+  setCards: PropTypes.func,
 };

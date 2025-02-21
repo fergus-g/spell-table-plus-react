@@ -209,6 +209,6 @@ export default CreateDeckModal;
 
 CreateDeckModal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func(),
-  onCreate: PropTypes.func(),
+  onClose: PropTypes.func,
+  onCreate: PropTypes.func,
 };

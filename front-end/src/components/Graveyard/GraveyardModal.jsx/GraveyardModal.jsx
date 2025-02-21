@@ -82,7 +82,7 @@ export default function GraveyardModal({ open, onClose, graveyard, exile }) {
 
 GraveyardModal.propTypes = {
   open: PropTypes.bool,
-  onClose: PropTypes.func(),
+  onClose: PropTypes.func,
   graveyard: PropTypes.array,
   exile: PropTypes.array,
 };
