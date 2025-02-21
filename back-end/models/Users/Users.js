@@ -1,4 +1,5 @@
 import { pool } from "../../db/index.js";
+import sql from "mssql";
 
 export const getUserByEmail = async (email) => {
   try {

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Modal,
   Box,
@@ -205,3 +206,9 @@ const CreateDeckModal = ({ open, onClose, onCreate }) => {
 };
 
 export default CreateDeckModal;
+
+CreateDeckModal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  onCreate: PropTypes.func,
+};

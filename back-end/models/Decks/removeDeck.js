@@ -16,9 +16,8 @@ import { pool } from "../../db/index.js";
 
 export default async function removeDeck(id) {
   const poolInstance = await pool;
-
+  const transaction = poolInstance.transaction();
   try {
-    const transaction = poolInstance.transaction();
     await transaction.begin();
 
     await transaction

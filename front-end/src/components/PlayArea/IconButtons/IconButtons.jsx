@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./iconButtons.module.css";
+import PropTypes from "prop-types";
+import styles from "./IconButtons.module.css";
 
 const IconButtons = ({
   onTap,
@@ -31,3 +32,14 @@ const IconButtons = ({
 };
 
 export default IconButtons;
+
+IconButtons.propTypes = {
+  onTap: PropTypes.func,
+  tapped: PropTypes.bool,
+  graveyard: PropTypes.array,
+  setGraveyard: PropTypes.func,
+  exile: PropTypes.array,
+  setExile: PropTypes.func,
+  removeFromPlayArea: PropTypes.func,
+  clickedId: PropTypes.number,
+};

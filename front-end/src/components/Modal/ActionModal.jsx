@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -95,3 +96,10 @@ export default function BasicModal({ open, onClose, openCreate, openDecks }) {
     </Modal>
   );
 }
+
+BasicModal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  openCreate: PropTypes.func,
+  openDecks: PropTypes.func,
+};

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { IconButton } from "@mui/material";
 import CreateDeckModal from "../Modal/CreateDeckModal";
 import ShowDeckModal from "../Modal/ShowDecksModal";
@@ -76,3 +77,7 @@ export default function SliderButton({ setCards }) {
     </div>
   );
 }
+
+SliderButton.propTypes = {
+  setCards: PropTypes.func,
+};

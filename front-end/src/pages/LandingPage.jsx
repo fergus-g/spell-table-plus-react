@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useUser } from "../context/UserContext";
@@ -110,9 +111,9 @@ const LandingPage = () => {
               An extension tool for Spell Table
             </Typography>
             <Typography variant="body1" fontSize={20} paddingTop={5}>
-              Don't have a camera? Can't understand opponent's board state? No
-              problem, Spell Table Plus will track everyone's board state with
-              simple clicks!
+              Don&#39;t have a camera? Can&#39;t understand opponent&#39;s board
+              state? No problem, Spell Table Plus will track everyone&#39;s
+              board state with simple clicks!
             </Typography>
             <Box mt={4}>
               <Typography variant="h6" fontWeight="bold">

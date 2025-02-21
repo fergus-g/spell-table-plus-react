@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import {
   Modal,
   Box,
@@ -161,3 +163,20 @@ const ShowDeckModal = ({
 };
 
 export default ShowDeckModal;
+
+DeckButton.propTypes = {
+  name: PropTypes.string,
+  colors: PropTypes.array,
+  onClick: PropTypes.func,
+  id: PropTypes.number,
+  onDelete: PropTypes.func,
+};
+
+ShowDeckModal.propTypes = {
+  open: PropTypes.bool,
+  onClose: PropTypes.func,
+  decks: PropTypes.array,
+  loading: PropTypes.bool,
+  onDelete: PropTypes.func,
+  setCards: PropTypes.func,
+};

@@ -10,7 +10,10 @@
   "scripts": {
     "start": "node bin/www.js",
     "dev": "node -r dotenv/config --watch bin/www.js",
-    "deploy": "git add . && git commit -m \"Deploy to Heroku\" && git push heroku main"
+    "deploy": "git add . && git commit -m \"Deploy to Heroku\" && git push heroku main",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
@@ -29,12 +32,18 @@
     "nodemon": "^3.1.9",
     "pg": "^8.13.1",
     "pool": "^0.4.1",
-    "socket.io": "^4.8.1"
+    "socket.io": "^4.8.1",
+    "vitest": "^3.0.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
-    "eslint": "^9.20.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
     "eslint-plugin-react": "^7.37.4",
-    "globals": "^15.15.0"
+    "globals": "^15.15.0",
+    "jsdom": "^26.0.0"
   }
 }
