@@ -51,7 +51,6 @@ describe("Decklist", () => {
     );
 
     const button = screen.getByRole("button", { name: /Island/i });
-    console.log(button);
     await userEvent.click(button);
 
     expect(setLands).toHaveBeenCalledWith(expect.any(Function));
@@ -70,7 +69,6 @@ describe("Decklist", () => {
     );
 
     const button = screen.getByRole("button", { name: /Accursed Marauder/i });
-    console.log(button);
     await userEvent.click(button);
 
     expect(setCreatures).toHaveBeenCalledWith(expect.any(Function));
@@ -89,7 +87,6 @@ describe("Decklist", () => {
     );
 
     const button = screen.getByRole("button", { name: /Smothering Tithe/i });
-    console.log(button);
     await userEvent.click(button);
 
     expect(setEnchantments).toHaveBeenCalledWith(expect.any(Function));
@@ -108,7 +105,6 @@ describe("Decklist", () => {
     );
 
     const button = screen.getByRole("button", { name: /Sol Ring/i });
-    console.log(button);
     await userEvent.click(button);
 
     expect(setArtifacts).toHaveBeenCalledWith(expect.any(Function));

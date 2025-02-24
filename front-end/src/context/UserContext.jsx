@@ -7,26 +7,24 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loggedOut, setLoggedOut] = useState(false);
 
-  // On page load, check for user in localStorage and set context
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
-    console.log("Checking localStorage on load. Saved user:", savedUser); // Logging saved user
+    console.log("Checking localStorage on load. Saved user:", savedUser);
 
     if (savedUser) {
-      setUser(savedUser); // Set the user from localStorage
+      setUser(savedUser);
     } else {
-      console.log("No user found in localStorage"); // Logging if no user is found
+      console.log("No user found in localStorage");
     }
   }, []);
 
-  // Persist user to localStorage whenever user data changes
   useEffect(() => {
     if (user) {
-      console.log("Saving user to localStorage:", user); // Log user data before saving
-      localStorage.setItem("user", JSON.stringify(user)); // Save user to localStorage
+      console.log("Saving user to localStorage:", user);
+      localStorage.setItem("user", JSON.stringify(user));
     } else {
       console.log("No user, clearing user from localStorage.");
-      localStorage.removeItem("user"); // Remove user from localStorage on logout
+      localStorage.removeItem("user");
     }
   }, [user]);
 
