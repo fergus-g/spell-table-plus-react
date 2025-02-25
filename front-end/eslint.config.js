@@ -7,8 +7,10 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: { globals: globals.browser },
-    rules: {
-      // Add any general rules here if needed
+    settings: {
+      react: {
+        version: "detect", // Auto-detect React version
+      },
     },
   },
   pluginJs.configs.recommended,

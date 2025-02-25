@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { it, describe, expect, vi, beforeEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
@@ -16,12 +17,23 @@ const UserProviderWithUser = ({ children, user }) => {
   );
 };
 
+// Add PropTypes to mock validation
+UserProviderWithUser.propTypes = {
+  children: PropTypes.node.isRequired,
+  user: PropTypes.object, // or PropTypes.shape({ username: PropTypes.string })
+};
+
 const SetUserHelper = ({ user }) => {
   const { setUser } = useUser();
   React.useEffect(() => {
     setUser(user);
   }, [user]);
   return null;
+};
+
+// Add PropTypes to mock validation
+SetUserHelper.propTypes = {
+  user: PropTypes.object,
 };
 
 beforeEach(() => {
@@ -40,6 +52,7 @@ describe("Decklist", () => {
 
     expect(await screen.findByText(/Loading/i)).toBeDefined();
   });
+
   it("renders the Header correctly with user context", async () => {
     render(
       <MemoryRouter>
