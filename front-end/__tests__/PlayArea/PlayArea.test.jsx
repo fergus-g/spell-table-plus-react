@@ -1,6 +1,7 @@
 import React from "react";
 import { it, describe, expect, vi, beforeEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import PlayArea from "../../src/components/PlayArea/PlayArea";
 
 const defaultProps = {
@@ -16,6 +17,8 @@ const defaultProps = {
   setLands: vi.fn(),
 };
 
+const clickHandler = vi.fn();
+
 beforeEach(() => {
   cleanup();
 });
@@ -25,5 +28,16 @@ describe("Decklist", () => {
     render(<PlayArea {...defaultProps} />);
 
     expect(await screen.findByText(/Artifacts/i)).toBeDefined();
+  });
+
+  it("updates the UI when a card is clicked", async () => {
+    render(<PlayArea {...defaultProps} />);
+
+    const img = screen.getByAltText("Accursed Marauder");
+    expect(img).toBeInTheDocument();
+
+    await userEvent.click(img);
+
+    expect(screen.findByText(/Exile/i)).toBeDefined();
   });
 });
