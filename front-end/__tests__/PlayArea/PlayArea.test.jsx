@@ -17,8 +17,6 @@ const defaultProps = {
   setLands: vi.fn(),
 };
 
-const clickHandler = vi.fn();
-
 beforeEach(() => {
   cleanup();
 });
