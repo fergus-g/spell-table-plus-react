@@ -17,10 +17,9 @@ const UserProviderWithUser = ({ children, user }) => {
   );
 };
 
-// Add PropTypes to mock validation
 UserProviderWithUser.propTypes = {
   children: PropTypes.node.isRequired,
-  user: PropTypes.object, // or PropTypes.shape({ username: PropTypes.string })
+  user: PropTypes.object,
 };
 
 const SetUserHelper = ({ user }) => {
@@ -31,13 +30,12 @@ const SetUserHelper = ({ user }) => {
   return null;
 };
 
-// Add PropTypes to mock validation
 SetUserHelper.propTypes = {
   user: PropTypes.object,
 };
 
 beforeEach(() => {
-  cleanup(); // This ensures the previous component tree is unmounted
+  cleanup();
 });
 
 describe("Decklist", () => {
